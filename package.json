@@ -8,9 +8,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/core": "^3.1.9",
+    "@mantine/dropzone": "^3.1.9",
+    "@mantine/hooks": "^3.1.9",
+    "@modulz/radix-icons": "^4.0.0",
+    "formidable": "^2.0.1",
     "next": "12.0.3",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sharp": "^0.29.3"
   },
   "devDependencies": {
     "eslint": "7.32.0",
