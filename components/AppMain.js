@@ -103,17 +103,23 @@ const AppMain = ({ setmodal, newFile }) => {
         fetch("https://imagebliss.deta.dev/api/v1/imageconverter", {
           method: "POST",
           body: populateFormdata(files.length),
-        }).then((res) => {
-          res.json().then((data) => {
-            newFile(data, data.idx, fileSelected, Target)
-          })
-          files.shift()
-          if (files.length) {
-            uploading()
-          } else {
-            return
-          }
         })
+          .then((res) => {
+            res.json().then((data) => {
+              newFile(data, data.idx, fileSelected, Target)
+            })
+            files.shift()
+            if (files.length) {
+              uploading()
+            } else {
+              return
+            }
+          })
+          .catch((err) => {
+            alert(
+              `Server timeout limit process { 10s }/n your file larger than server to handle`
+            )
+          })
       }
     }
     uploading()
@@ -160,6 +166,7 @@ const AppMain = ({ setmodal, newFile }) => {
         ref={DropzoneRef}
         id="upload"
         size="xl"
+        maxSize={1 * 1024 * 1024}
         onDrop={(files) => {
           selectFile(files)
         }}
