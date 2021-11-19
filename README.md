@@ -1,8 +1,10 @@
 ## ImageBliss
 
-ImageBliss is web application for convert any image files to jpeg pdf webp avif format support single and muiltiple files. powered by nexjs mantine and sharp for image processing
+ImageBliss is web application for convert any image files to jpeg pdf webp avif format support single and muiltiple files. powered by [nexjs](https://nextjs.org/) [mantine](https://mantine.dev/) and [sharp](https://sharp.pixelplumbing.com/) for image processing
+
 
 demo page visit : [demo](https://imagebliss.surge.sh/) `# due to deta free micro server with server timout at 10s, Filesize is limit to < 512 kb per file `
+
 
 ## Getting Started
 
@@ -22,7 +24,7 @@ npm run start
 
 ## Improvement
 
-Technically it is functionalal ,There might be some thing that can be improving...
+Technically it is functional ,Therefore, there might be some thing that can be improving...
 
 - Responsive Desing
 - Support image resizing
@@ -31,4 +33,12 @@ Technically it is functionalal ,There might be some thing that can be improving.
 
 ## Deployment
 
-Demo page is using free deta.sh for image processing api
+Demo page is using free hosting from surge.sh for static front end and deta.sh for image processing backend api.
+The demo is using fastify hosting at deta.sh due to software limitation of deta.sh ,It cannot host full nextjs application.
+
+In this repository did not contain image processing api demo that host at deta.sh but comes with built in nextjs api and it should work properly with 
+``` 
+npm run start 
+# or
+next start 
+```
