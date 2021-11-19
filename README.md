@@ -1,34 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## ImageBliss
+
+ImageBliss is web application for convert any image files to jpeg pdf webp avif format support single and muiltiple files. powered by nexjs mantine and sharp for image processing
+
+demo page visit : [demo](https://imagebliss.surge.sh/)
 
 ## Getting Started
 
-First, run the development server:
+To run this project in your local machine
 
 ```bash
+# clone this repository
+git clone https://github.com/fransbell/imagebliss.git
+cd imagebliss
+#install dependencies
+npm install
+#run in development mode
 npm run dev
 # or
-yarn dev
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Improvement
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Technically it is functionalal ,There might be some thing that can be improving...
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Responsive Desing
+- Support image resizing
+- Refactor / Reconstruct project structure
+- Revisit code `#adjust reconstuct some behavior eg. on upload require first image to load before content is displaying `
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Deployment
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Demo page is using free deta.sh for image processing api
