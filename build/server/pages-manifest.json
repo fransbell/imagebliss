@@ -1,8 +1,0 @@
-{
-  "/_app": "pages/_app.js",
-  "/_document": "pages/_document.js",
-  "/api/imgcoverterV2": "pages/api/imgcoverterV2.js",
-  "/": "pages/index.html",
-  "/_error": "pages/_error.js",
-  "/404": "pages/404.html"
-}
