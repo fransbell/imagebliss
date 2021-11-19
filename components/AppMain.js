@@ -117,7 +117,7 @@ const AppMain = ({ setmodal, newFile }) => {
           })
           .catch((err) => {
             alert(
-              `Server timeout limit process { 10s }/n your file larger than server to handle`
+              `Server timeout limit process { 10s }\n your file larger than server can handle`
             )
           })
       }
