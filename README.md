@@ -2,7 +2,9 @@
 
 ImageBliss is web application for convert any image files to jpeg pdf webp avif format support single and muiltiple files. powered by [nexjs](https://nextjs.org/) [mantine](https://mantine.dev/) and [sharp](https://sharp.pixelplumbing.com/) for image processing
 
-demo page visit : [ImageBliss](https://imagebliss.surge.sh/)
+
+demo page visit : [demo](https://imagebliss.surge.sh/) `# due to deta free micro server with server timout at 10s, Filesize is limit to < 512 kb per file `
+
 
 ## Getting Started
 

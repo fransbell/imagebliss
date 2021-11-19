@@ -106,6 +106,7 @@ const Home = (props) => {
     <main className={classes.main}>
       <Head>
         <title>Image Converter</title>
+        <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <Container className={classes.heading}>
         <Title className={classes.heading}>Image Converter</Title>
