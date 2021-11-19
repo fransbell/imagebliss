@@ -23,13 +23,14 @@ const imageConverter = async (req, res) => {
       // parse formdata
       form.parse(req, async (err, fields, files) => {
         const path = files.file.filepath
-        const data = await convert(path, "png")
-        resolve(data)
+        const data = await convert(path, fields.format)
+        resolve({ data: data, order: fields.order })
       })
     }).then((any) => {
       res.json({
         message: "completed",
-        data: any,
+        data: any.data,
+        idx: any.order,
       })
       res.status(200)
     })

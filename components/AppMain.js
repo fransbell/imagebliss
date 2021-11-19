@@ -1,7 +1,7 @@
-import { Chips, Chip, Group, LoadingOverlay, Modal } from "@mantine/core"
+import { Chips, Chip, Group, Notification } from "@mantine/core"
 import { Text, Button, Collapse, NumberInput } from "@mantine/core"
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone"
-import { createStyles, Global } from "@mantine/styles"
+import { createStyles } from "@mantine/styles"
 import { ImageIcon } from "@modulz/radix-icons"
 import React, { useState, useRef } from "react"
 
@@ -76,29 +76,36 @@ const AppMain = ({ setmodal, newFile }) => {
   const convertHandler = () => {
     // --> img is not selected
     if (!fileSelected.length) {
-      return console.log("there is no file selected")
+      setnotify(true)
+      return
+    }
+    if (!Target) {
+      setnotify(true)
+      return
     }
     // initialize formdata
     setmodal()
     const files = document.getElementById("upload").firstChild.files
+    const maxLength = files.length
     files = Array.from(files)
 
-    const populateFormdata = () => {
+    const populateFormdata = (order) => {
       const form = new FormData()
       form.append("message", "send")
       form.append("format", Target)
       form.append("resize", false)
       form.append("file", files[0])
+      form.append("order", maxLength - order)
       return form
     }
     const uploading = () => {
       if (files.length) {
-        fetch("/api/imgcoverterV2", {
+        fetch("https://imagebliss.deta.dev/api/v1/imageconverter", {
           method: "POST",
-          body: populateFormdata(),
+          body: populateFormdata(files.length),
         }).then((res) => {
           res.json().then((data) => {
-            newFile(data, fileSelected, Target)
+            newFile(data, data.idx, fileSelected, Target)
           })
           files.shift()
           if (files.length) {
@@ -109,12 +116,33 @@ const AppMain = ({ setmodal, newFile }) => {
         })
       }
     }
-    console.log(`selected file:${files.length}`)
     uploading()
   }
 
+  const [notify, setnotify] = useState(false)
+
   return (
-    <Group position="center" direction="column" className={classes.mainApp}>
+    <Group
+      size="xl"
+      position="center"
+      direction="column"
+      className={classes.mainApp}
+    >
+      {notify ? (
+        <Notification
+          style={{
+            width: "420px",
+            position: "fixed",
+            bottom: "0",
+            zIndex: "10",
+          }}
+          onClose={() => {
+            setnotify(false)
+          }}
+        >
+          There is no file or target format selected
+        </Notification>
+      ) : null}
       <div className={classes.target}>
         <div>
           <Text component="p" styles={{ padding: "4px 0" }}>
@@ -127,29 +155,17 @@ const AppMain = ({ setmodal, newFile }) => {
             <Chip value="avif">AVIF</Chip>
           </Chips>
         </div>
-
-        <Button
-          color="dark"
-          style={{ margin: "12px 0" }}
-          onClick={() => {
-            setOption(!Option)
-          }}>
-          Option
-        </Button>
-        <Collapse in={Option}>
-          Width : <NumberInput />
-          Height :<NumberInput />
-        </Collapse>
       </div>
       <Dropzone
         ref={DropzoneRef}
         id="upload"
-        size="100%"
+        size="xl"
         onDrop={(files) => {
           selectFile(files)
         }}
         accept={IMAGE_MIME_TYPE}
-        my="24px">
+        my="24px"
+      >
         {(status) => (
           <Group className={classes.dropzone} position="center">
             <ImageIcon className={classes.imageIcon} />
